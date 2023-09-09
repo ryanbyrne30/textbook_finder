@@ -13,11 +13,12 @@ if __name__ == "__main__":
   # bc.utils.save_data(unique_courses, 'unique_courses.json')
 
   ### get all courses for subject
+  subject = "TMNT"
   unique_courses = bc.utils.read_data('unique_courses.json')
-  courses = bc.get_courses_for_subject('MATH', unique_courses)
+  courses = bc.get_courses_for_subject(subject, unique_courses)
   # bc.utils.save_data(courses, "courses_acct.json")
 
   ### get all materials for subject
   course_ids = [ c['course_id'] for c in courses ]
   materials = bc.fetch_materials_for_courses(course_ids)
-  bc.utils.save_data(materials, 'materials.json')
+  bc.utils.save_data(materials, f'materials_{subject}.json')

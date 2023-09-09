@@ -11,13 +11,10 @@ class Subject:
         return f"Subject('{self.name}', '{self.url}')"
 
 
-class MITSubjects:
+class MITSubjectsScraper:
     def __init__(self) -> None:
         self.url_base = "http://student.mit.edu/catalog"
         self.url = f"{self.url_base}/index.cgi"
-
-    def fetch(self):
-        raise NotImplementedError()
 
     def get_html(self):
         response = requests.get(self.url)
@@ -37,7 +34,7 @@ class MITSubjects:
 
 
 if __name__ == "__main__":
-    mit_subjects = MITSubjects()
+    mit_subjects = MITSubjectsScraper()
     html = mit_subjects.get_html()
     soup = mit_subjects.get_soup(html)
     subjects = mit_subjects.get_subjects(soup)
